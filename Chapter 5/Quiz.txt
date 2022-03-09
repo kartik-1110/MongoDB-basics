@@ -1,0 +1,53 @@
+=====> Quiz: Aggregation Framework
+
+Problem: What are the differences between using aggregate() and find()?
+
+Solution: 1: aggregate() can do what find() can and more.
+          2: aggregate() allows us to compute and reshape data in the cursor.
+
+
+=====> Quiz 1: sort() and limit()
+
+Problem: Which of the following commands will return the name and founding year for the 5 oldest companies in the sample_training.companies collection?
+
+Solution: 1: db.companies.find({ "founded_year": { "$ne": null }},
+                  { "name": 1, "founded_year": 1 }
+                 ).sort({ "founded_year": 1 }).limit(5)
+          2: db.companies.find({ "founded_year": { "$ne": null }},
+                  { "name": 1, "founded_year": 1 }
+                 ).limit(5).sort({ "founded_year": 1 })
+
+
+=====> Quiz 2: sort() and limit()
+
+Problem: To complete this exercise connect to your Atlas cluster using the in-browser IDE space at the end of this chapter.
+In what year was the youngest bike rider from the sample_training.trips collection born?
+
+Solution: 1999
+
+
+=====> Quiz: Introduction to Indexes
+
+Problem: Jameela often queries the sample_training.routes collection by the src_airport field like this:
+        db.routes.find({ "src_airport": "MUC" }).pretty()
+Which command will create an index that will support this query?
+
+Solution: db.routes.createIndex({ "src_airport": -1 })
+
+
+=====> Quiz: Introduction to Data Modeling
+
+Problem: What is data modeling?
+
+Solution: a way to organize fields in a document to support your application performance and querying capabilities
+
+
+=====> Quiz: Upsert
+
+Problem: How does the upsert option work?
+
+Solution: 1: By default upsert is set to false.
+          2: When upsert is set to false and the query predicate returns an empty cursor then there will be no updated documents as a result of this operation.
+
+
+          

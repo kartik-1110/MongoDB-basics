@@ -1,0 +1,26 @@
+=====> Quiz 1: What is the MongoDB Database?
+
+Problem: Select the statements that together help build the most complete definition of the MongoDB database:
+Solution: 1: The MongoDB database is an organized way to store and access data.
+          2: MongoDB is a NoSQL database that uses documents to store data in an organized way.
+
+
+=====> Quiz 2: What is a Document?
+
+Problem: In MongoDB how does a document relate to a collection?
+Solution: Collections consist of one or many documents.
+
+
+=====> Quiz 3:  What is a Document?
+
+Problem: In a MongoDB Document what is the role of fields and values?
+Solution: 1: Each field has a value associated with it.
+          2: A field is a unique identifier for a specific datapoint.
+
+
+=====> Quiz: What is Atlas?
+
+Problem: How is MongoDB Atlas related to MongoDB the Database?
+Solution: 1: They both are MongoDB products.
+          2: Atlas has many tools and services within it that are built specifically for the MongoDB Database.
+

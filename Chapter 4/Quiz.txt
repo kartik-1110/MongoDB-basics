@@ -1,0 +1,62 @@
+=====> Quiz 1: Logic Operators
+
+Problem: To complete this exercise connect to your Atlas cluster using the in-browser IDE space at the end of this chapter.
+How many businesses in the sample_training.inspections dataset have the inspection result "Out of Business" and belong to the "Home Improvement Contractor - 100" sector?
+
+Solution: 4
+
+
+=====> Quiz 2: Logic Operators
+
+Problem: Which is the most succinct query to return all documents from the sample_training.inspections collection where the inspection date is either "Feb 20 2015", or "Feb 21 2015" and the company is not part of the "Cigarette Retail Dealer - 127" sector?
+
+Solution: db.inspections.find(
+        { "$or": [ { "date": "Feb 20 2015" },
+                    { "date": "Feb 21 2015" } ],
+            "sector": { "$ne": "Cigarette Retail Dealer - 127" }}).pretty()
+
+
+=====> Quiz 1: $expr
+
+Problem: What are some of the uses for the $ sign in MQL?
+
+Solution: 1: $ signifies that you are looking at the value of that field rather than the field name.
+          2: $ denotes an operator.
+
+
+=====> Quiz 2: $expr
+
+Problem: Which of the following statements will find all the companies that have more employees than the year in which they were founded?
+
+Solution: 1: db.companies.find(
+            { "$expr": { "$gt": [ "$number_of_employees", "$founded_year" ]} }
+            ).count()
+          2: db.companies.find(
+            { "$expr": { "$lt": [ "$founded_year", "$number_of_employees" ] } }
+            ).count()
+
+
+=====> Quiz: Array Operators
+
+Problem: Which of the following queries will return all listings that have "Free parking on premises", "Air conditioning", and "Wifi" as part of their amenities, and have at least 2 bedrooms in the sample_airbnb.listingsAndReviews collection?
+
+Solution: db.listingsAndReviews.find(
+        { "amenities":
+            { "$all": [ "Free parking on premises", "Wifi", "Air
+                conditioning" ] }, "bedrooms": { "$gte":  2 } } ).pretty()
+
+
+=====> Quiz: Array Operators and Projection
+
+Problem: Which of the following queries will return only the names of companies from the sample_training.companies collection that had exactly 8 funding rounds?
+
+Solution: db.companies.find({ "funding_rounds": { "$size": 8 } },
+                  { "name": 1, "_id": 0 })
+
+
+=====> Quiz: Querying Arrays and Sub-documents
+
+Problem: Which of the following queries will return the names and addresses of all listings from the sample_airbnb.listingsAndReviews collection where the first amenity in the list is "Internet"?
+
+Solution: db.listingsAndReviews.find({ "amenities.0": "Internet" },
+                           { "name": 1, "address": 1 }).pretty()
